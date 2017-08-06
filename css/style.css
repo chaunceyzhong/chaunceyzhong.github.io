@@ -1372,9 +1372,10 @@ pre .javascript .function {
   margin-right: 5px;
   display: inline-block;
 }
-blockquote {
+.article-entry blockquote {
   text-align: left;
+  overflow-x: auto;
 }
-pre {
-  background-color: #2d2d2d;
+.article-entry pre {
+  background-color: #130831;
 }
