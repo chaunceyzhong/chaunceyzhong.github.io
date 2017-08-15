@@ -7,20 +7,20 @@
   
   <title>正则表达式 | Chauncey&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言很多开发者在项目为了应用复杂的正则表达式验证,经常使用一些小抄来记住复杂的语法和各种常见的指令。在这篇文章中，我将试图让大家明白什么是正则表达式，以及如何更轻松的学习正则表达式。 也许你是初学者，我先来讲讲什么是正则表达式吧: 正则表达式可以帮助我们更好的描述复杂的文本格式。一旦你描述清楚了这些格式，那你就可以利用它们对文本数据进行检索、替换、提取和修改操作。 实战DEMO第一步：引进有关正则">
+  <meta name="description" content="前言很多开发者在项目为了应用复杂的正则表达式验证,经常使用一些小抄来记住复杂的语法和各种常见的指令。在这篇文章中，我将试图让大家明白什么是正则表达式，以及如何更轻松的学习正则表达式。">
 <meta name="keywords" content="正则表达式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="正则表达式">
 <meta property="og:url" content="http://yoursite.com/2017/08/06/正则表达式/index.html">
 <meta property="og:site_name" content="Chauncey&#39;s blog">
-<meta property="og:description" content="前言很多开发者在项目为了应用复杂的正则表达式验证,经常使用一些小抄来记住复杂的语法和各种常见的指令。在这篇文章中，我将试图让大家明白什么是正则表达式，以及如何更轻松的学习正则表达式。 也许你是初学者，我先来讲讲什么是正则表达式吧: 正则表达式可以帮助我们更好的描述复杂的文本格式。一旦你描述清楚了这些格式，那你就可以利用它们对文本数据进行检索、替换、提取和修改操作。 实战DEMO第一步：引进有关正则">
+<meta property="og:description" content="前言很多开发者在项目为了应用复杂的正则表达式验证,经常使用一些小抄来记住复杂的语法和各种常见的指令。在这篇文章中，我将试图让大家明白什么是正则表达式，以及如何更轻松的学习正则表达式。">
 <meta property="og:image" content="http://ouavb62y0.bkt.clouddn.com/001-regex-status.jpg">
 <meta property="og:image" content="http://ouavb62y0.bkt.clouddn.com/001-regex-BCD.jpg">
 <meta property="og:image" content="http://ouavb62y0.bkt.clouddn.com/001-regex-demo.jpg">
-<meta property="og:updated_time" content="2017-08-07T06:04:26.802Z">
+<meta property="og:updated_time" content="2017-08-15T07:47:22.041Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="正则表达式">
-<meta name="twitter:description" content="前言很多开发者在项目为了应用复杂的正则表达式验证,经常使用一些小抄来记住复杂的语法和各种常见的指令。在这篇文章中，我将试图让大家明白什么是正则表达式，以及如何更轻松的学习正则表达式。 也许你是初学者，我先来讲讲什么是正则表达式吧: 正则表达式可以帮助我们更好的描述复杂的文本格式。一旦你描述清楚了这些格式，那你就可以利用它们对文本数据进行检索、替换、提取和修改操作。 实战DEMO第一步：引进有关正则">
+<meta name="twitter:description" content="前言很多开发者在项目为了应用复杂的正则表达式验证,经常使用一些小抄来记住复杂的语法和各种常见的指令。在这篇文章中，我将试图让大家明白什么是正则表达式，以及如何更轻松的学习正则表达式。">
 <meta name="twitter:image" content="http://ouavb62y0.bkt.clouddn.com/001-regex-status.jpg">
   
     <link rel="alternate" href="/atom.xml" title="Chauncey&#39;s blog" type="application/atom+xml">
@@ -59,7 +59,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -91,6 +91,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="u524D_u8A00"><a href="#u524D_u8A00" class="headerlink" title="前言"></a>前言</h2><p>很多开发者在项目为了应用复杂的正则表达式验证,经常使用一些小抄来记住复杂的语法和各种常见的指令。<br>在这篇文章中，我将试图让大家明白什么是正则表达式，以及如何更轻松的学习正则表达式。<br><img src="http://ouavb62y0.bkt.clouddn.com/001-regex-status.jpg" alt=""></p>
+<a id="more"></a>
 <p>也许你是初学者，我先来讲讲什么是正则表达式吧:</p>
 <p><div style="color:gray">正则表达式可以帮助我们更好的描述复杂的文本格式。一旦你描述清楚了这些格式，那你就可以利用它们对文本数据进行检索、替换、提取和修改操作。</div><br></p>
 <h2 id="u5B9E_u6218DEMO"><a href="#u5B9E_u6218DEMO" class="headerlink" title="实战DEMO"></a>实战DEMO</h2><p>第一步：引进有关正则表达式的命名空间。<br></p>
@@ -109,7 +110,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/06/正则表达式/" data-id="cj6d9uwe600011czlkwu916ls" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2017/08/06/正则表达式/" data-id="cj6da4t8z0001twzlmlesr4sb" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/正则表达式/">正则表达式</a></li></ul>
@@ -121,7 +122,7 @@
 <nav id="article-nav">
   
     <a href="/2017/08/15/bookmark/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Neuer</strong>
+      <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
           技术网站
@@ -163,7 +164,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archiv</h3>
+    <h3 class="widget-title">Archives</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li></ul>
     </div>
@@ -173,7 +174,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">letzter Beitrag</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
         
