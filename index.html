@@ -12,6 +12,7 @@
 <meta property="og:title" content="Chauncey&#39;s blog">
 <meta property="og:url" content="http://yoursite.com/index.html">
 <meta property="og:site_name" content="Chauncey&#39;s blog">
+<meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chauncey&#39;s blog">
   
@@ -101,9 +102,10 @@
 <li>provided：已提供依赖范围。对编译、测试classpath有效，运行时无效。eg：servlet.api（容器已提供）</li>
 <li>runtime ：运行时依赖范围。对测试、运行classpath有效，但运行时无效。eg：JDBC驱动实现(编译时候只需要JDK提供JDBC接口，测试、运行才会具体现).</li>
 <li>system</li>
+<li>import</li>
 </ol>
 <h3 id="4-3__u4F20_u9012_u4F9D_u8D56"><a href="#4-3__u4F20_u9012_u4F9D_u8D56" class="headerlink" title="4.3 传递依赖"></a>4.3 传递依赖</h3><ol>
-<li>（没指定scope,默认为compile）假设项目A-&gt;项目B，项目B-&gt;项目C,则项目A-&gt;项目C.</li>
+<li>（没指定scope,默认为compile）假设项目A-&gt;项目B，项目B-&gt;项目C,则项目A-&gt;项目C.<br>依赖范围与classpath关系<br>|         | compile | test    | provided | runtime |<br>| :—— | ——  | ——–|———-|<br>| compile | compile |   -     | provided | runtime |<br>| test    | test    |   -     |    -     | runtime |<br>| provided| provided|   -     |    -     | runtime |<br>| runtime | runtime |</li>
 </ol>
 <h3 id="4-4__u4F9D_u8D56_u8C03_u8282"><a href="#4-4__u4F9D_u8D56_u8C03_u8282" class="headerlink" title="4.4 依赖调节"></a>4.4 依赖调节</h3><ol>
 <li>路径最近优先(假设有2条依赖路径:1.A-&gt;B-&gt;C(1.0) 2.A-&gt;C(2.0) 最终会选择C(2.0)).</li>
@@ -126,7 +128,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/23/learn_by_hard_maven/" data-id="cj6q9054o0003y0zl9lvem5qn" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/08/23/learn_by_hard_maven/" data-id="cj6rz89f40009vwzlpf83uh3i" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/learn-by-hard/">learn-by-hard</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/maven/">maven</a></li></ul>
@@ -167,7 +169,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/16/keycode/" data-id="cj6q9054g0001y0zl30bvhj99" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/08/16/keycode/" data-id="cj6rz89dt0003vwzlnmjep701" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/FrontEnd/">FrontEnd</a></li></ul>
@@ -207,7 +209,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/15/bookmark/" data-id="cj6q905490000y0zl7ovos21n" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/08/15/bookmark/" data-id="cj6rz89d00000vwzlhopei0se" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网站收集/">网站收集</a></li></ul>
@@ -250,7 +252,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/06/正则表达式/" data-id="cj6q9054q0004y0zl4etgi1dn" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/08/06/正则表达式/" data-id="cj6rz89df0001vwzln558jd1t" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/正则表达式/">正则表达式</a></li></ul>
@@ -273,7 +275,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
+    <h3 class="widget-title">标签</h3>
     <div class="widget">
       <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/FrontEnd/">FrontEnd</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/learn-by-hard/">learn-by-hard</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/maven/">maven</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站收集/">网站收集</a><span class="tag-list-count">1</span></li></ul>
     </div>
@@ -283,7 +285,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
+    <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
       <a href="/tags/FrontEnd/" style="font-size: 10px;">FrontEnd</a> <a href="/tags/learn-by-hard/" style="font-size: 10px;">learn-by-hard</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/网站收集/" style="font-size: 10px;">网站收集</a>
     </div>
@@ -292,9 +294,9 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">4</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">4</span></li></ul>
     </div>
   </div>
 
@@ -302,7 +304,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
         
