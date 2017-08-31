@@ -1093,6 +1093,7 @@ a.article-title:hover {
 }
 .article-entry pre,
 .article-entry .highlight {
+  background: #2d2d2d;
   margin: 0 -20px;
   padding: 15px 20px;
   border-style: solid;
@@ -1377,4 +1378,16 @@ pre .javascript .function {
 }
 .article-entry pre {
   background-color: #130831;
+}
+.code {
+  width: 100%;
+}
+.article-entry .highlight {
+  margin: 0 -20px;
+  padding: 15px 20px;
+  overflow: auto;
+  color: #ccc;
+  line-height: 22px;
+  background-color: #fff;
+  border: none;
 }
