@@ -5,3 +5,15 @@
 .article-entry pre {
   background-color: #130831;
 }
+.code {
+  width: 100%;
+}
+.article-entry .highlight {
+  margin: 0 -20px;
+  padding: 15px 20px;
+  overflow: auto;
+  color: #ccc;
+  line-height: 22px;
+  background-color: #fff;
+  border: none;
+}
