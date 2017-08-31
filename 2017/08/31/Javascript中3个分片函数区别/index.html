@@ -8,20 +8,20 @@
   
   <title>Javascript中3个分片函数区别 | Chauncey&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="分片函数1.splice 中文意思–拼接 用于数组的拼接. 示例如下.123456//1.定义一个数组var arr = [1,2,3,4,5];//2.在第三个位置插入 &apos;A&apos;,&apos;B&apos;,&apos;c&apos;三个字母.参数1:指定位置 参数2:插入的个数 参数3...：待插入元素var temp = arr.splice(2,3,&apos;A&apos;,&apos;B&apos;,&apos;C&apos;);//3.结果 temp为 返回拼接后删除的元素，arr">
+  <meta name="description" content="分片函数1.splice 中文意思–拼接 用于数组的拼接. 示例如下.123456//1.定义一个数组var arr = [1,2,3,4,5];//2.在第三个位置插入 &apos;A&apos;,&apos;B&apos;,&apos;c&apos;三个字母.参数1:指定位置 参数2:插入的个数 参数3...：待插入元素var temp = arr.splice(2,3,&apos;A&apos;,&apos;B&apos;,&apos;C&apos;);//数组本身发生改变.//3.结果 temp为 返回拼">
 <meta name="keywords" content="FrontEnd,javascript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Javascript中3个分片函数区别">
 <meta property="og:url" content="https://chaunceyzhong.github.io/2017/08/31/Javascript中3个分片函数区别/index.html">
 <meta property="og:site_name" content="Chauncey&#39;s blog">
-<meta property="og:description" content="分片函数1.splice 中文意思–拼接 用于数组的拼接. 示例如下.123456//1.定义一个数组var arr = [1,2,3,4,5];//2.在第三个位置插入 &apos;A&apos;,&apos;B&apos;,&apos;c&apos;三个字母.参数1:指定位置 参数2:插入的个数 参数3...：待插入元素var temp = arr.splice(2,3,&apos;A&apos;,&apos;B&apos;,&apos;C&apos;);//3.结果 temp为 返回拼接后删除的元素，arr">
+<meta property="og:description" content="分片函数1.splice 中文意思–拼接 用于数组的拼接. 示例如下.123456//1.定义一个数组var arr = [1,2,3,4,5];//2.在第三个位置插入 &apos;A&apos;,&apos;B&apos;,&apos;c&apos;三个字母.参数1:指定位置 参数2:插入的个数 参数3...：待插入元素var temp = arr.splice(2,3,&apos;A&apos;,&apos;B&apos;,&apos;C&apos;);//数组本身发生改变.//3.结果 temp为 返回拼">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://chaunceyzhong.github.io/images/spring.jpg">
-<meta property="og:updated_time" content="2017-08-31T09:26:06.091Z">
+<meta property="og:image" content="http://ouavb62y0.bkt.clouddn.com/002-index.png">
+<meta property="og:updated_time" content="2017-08-31T09:48:21.407Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Javascript中3个分片函数区别">
-<meta name="twitter:description" content="分片函数1.splice 中文意思–拼接 用于数组的拼接. 示例如下.123456//1.定义一个数组var arr = [1,2,3,4,5];//2.在第三个位置插入 &apos;A&apos;,&apos;B&apos;,&apos;c&apos;三个字母.参数1:指定位置 参数2:插入的个数 参数3...：待插入元素var temp = arr.splice(2,3,&apos;A&apos;,&apos;B&apos;,&apos;C&apos;);//3.结果 temp为 返回拼接后删除的元素，arr">
-<meta name="twitter:image" content="https://chaunceyzhong.github.io/images/spring.jpg">
+<meta name="twitter:description" content="分片函数1.splice 中文意思–拼接 用于数组的拼接. 示例如下.123456//1.定义一个数组var arr = [1,2,3,4,5];//2.在第三个位置插入 &apos;A&apos;,&apos;B&apos;,&apos;c&apos;三个字母.参数1:指定位置 参数2:插入的个数 参数3...：待插入元素var temp = arr.splice(2,3,&apos;A&apos;,&apos;B&apos;,&apos;C&apos;);//数组本身发生改变.//3.结果 temp为 返回拼">
+<meta name="twitter:image" content="http://ouavb62y0.bkt.clouddn.com/002-index.png">
   
     <link rel="alternate" href="/atom.xml" title="Chauncey&#39;s blog" type="application/atom+xml">
   
@@ -89,18 +89,31 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="/images/spring.jpg" alt=""></p>
+        <p><img src="http://ouavb62y0.bkt.clouddn.com/002-index.png" alt=""></p>
 <h3 id="u5206_u7247_u51FD_u6570"><a href="#u5206_u7247_u51FD_u6570" class="headerlink" title="分片函数"></a>分片函数</h3><h4 id="1-splice"><a href="#1-splice" class="headerlink" title="1.splice"></a>1.splice</h4><ol>
 <li>中文意思–<em>拼接</em></li>
 <li>用于<em>数组</em>的拼接.</li>
-<li>示例如下.<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//1.定义一个数组</span></div><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</div><div class="line"><span class="comment">//2.在第三个位置插入 'A','B','c'三个字母.参数1:指定位置 参数2:插入的个数 参数3...：待插入元素</span></div><div class="line"><span class="keyword">var</span> temp = arr.splice(<span class="number">2</span>,<span class="number">3</span>,<span class="string">'A'</span>,<span class="string">'B'</span>,<span class="string">'C'</span>);</div><div class="line"><span class="comment">//3.结果 temp为 返回拼接后删除的元素，arr自身改变</span></div><div class="line">temp ---&gt; [<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</div></pre></td></tr></table></figure>
+<li>示例如下.<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//1.定义一个数组</span></div><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</div><div class="line"><span class="comment">//2.在第三个位置插入 'A','B','c'三个字母.参数1:指定位置 参数2:插入的个数 参数3...：待插入元素</span></div><div class="line"><span class="keyword">var</span> temp = arr.splice(<span class="number">2</span>,<span class="number">3</span>,<span class="string">'A'</span>,<span class="string">'B'</span>,<span class="string">'C'</span>);<span class="comment">//数组本身发生改变.</span></div><div class="line"><span class="comment">//3.结果 temp为 返回拼接后删除的元素，arr自身改变</span></div><div class="line">temp ---&gt; [<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</div></pre></td></tr></table></figure>
 </li>
 </ol>
-<h4 id="slice"><a href="#slice" class="headerlink" title="slice"></a>slice</h4><h4 id="split"><a href="#split" class="headerlink" title="split"></a>split</h4>
+<h4 id="slice"><a href="#slice" class="headerlink" title="slice"></a>slice</h4><ol>
+<li>中文意思—“切片”.</li>
+<li>可用于取出字符串/数组的片段.</li>
+<li>示例如下.<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="number">1.</span>定义一个数组</div><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]; </div><div class="line"><span class="number">2.</span>从第一个位置起取长度为<span class="number">3</span></div><div class="line"><span class="keyword">var</span> temp = slice(<span class="number">0</span>,<span class="number">3</span>);<span class="comment">//第一个位置起到第三个位置结束，数组本身不改变.</span></div><div class="line"><span class="number">3.</span>结果</div><div class="line">temp--&gt;[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</div><div class="line"><span class="number">4.</span>如过指定的起始参数大于数组长度,返回空。另外 slice(<span class="number">-1</span>)：[<span class="number">6</span>] silce(<span class="number">-10</span>):[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]取出全部 slice(<span class="number">10</span>) 空</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="split"><a href="#split" class="headerlink" title="split"></a>split</h4><ol>
+<li>中文意思—“分割”</li>
+<li>用于字符串</li>
+<li>示例如下<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//1.定义一个字符串</span></div><div class="line"><span class="keyword">var</span> str = <span class="string">"hello,world"</span>;</div><div class="line"><span class="comment">//2. 以 "，"做为分割标识.</span></div><div class="line"><span class="keyword">var</span> temp = str.split(<span class="string">","</span>);<span class="comment">//字符串本身不改变.</span></div><div class="line"><span class="comment">//3.结果</span></div><div class="line">temp --&gt;[<span class="string">"hello"</span>,<span class="string">"world"</span>];</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="u603B_u7ED3"><a href="#u603B_u7ED3" class="headerlink" title="总结"></a>总结</h4><p>其实很多函数在字面转换为中文来理解或者英文本意来理解,会对函数的用意更加深刻。<br>1.splice 作用于本身，返回值为去除的元素数组.<br>2.slice/split 对操作数本身不产生改变,返回值想要得到的值.</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://chaunceyzhong.github.io/2017/08/31/Javascript中3个分片函数区别/" data-id="cj708x3j40000t0zlizhmuuak" class="article-share-link">Share</a>
+      <a data-url="https://chaunceyzhong.github.io/2017/08/31/Javascript中3个分片函数区别/" data-id="cj709pq7f00015gzlsajqrxxh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/FrontEnd/">FrontEnd</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
