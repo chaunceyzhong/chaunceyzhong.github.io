@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="logo" content="http://ouavb62y0.bkt.clouddn.com/octicons.jpg">
+  
+
+  
+  <title>阻止子窗口滚动条影响父窗口滚动条 | Chauncey&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="起因最近在工作上遇到一个问题，就是在子窗口上/移动滚动条至末端时候继续上/移动滚动条,结果父窗口的滚动条也上/下移动了。 解决方案 利用浏览器滚动事件.（FF使用DOMMouseScroll，其他浏览器都是用mousewheel.） 解决思路.FF下有个特殊属性event.detail，表示滚动的值event.detail正数：向下滚动，负数：向上滚动滚动一次值3，向上滚动一页值为-32768，向">
+<meta name="keywords" content="-FrontEnd -scroll">
+<meta property="og:type" content="article">
+<meta property="og:title" content="阻止子窗口滚动条影响父窗口滚动条">
+<meta property="og:url" content="https://chaunceyzhong.github.io/2017/09/09/scrollPrevented/index.html">
+<meta property="og:site_name" content="Chauncey&#39;s blog">
+<meta property="og:description" content="起因最近在工作上遇到一个问题，就是在子窗口上/移动滚动条至末端时候继续上/移动滚动条,结果父窗口的滚动条也上/下移动了。 解决方案 利用浏览器滚动事件.（FF使用DOMMouseScroll，其他浏览器都是用mousewheel.） 解决思路.FF下有个特殊属性event.detail，表示滚动的值event.detail正数：向下滚动，负数：向上滚动滚动一次值3，向上滚动一页值为-32768，向">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-09-09T06:41:42.106Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="阻止子窗口滚动条影响父窗口滚动条">
+<meta name="twitter:description" content="起因最近在工作上遇到一个问题，就是在子窗口上/移动滚动条至末端时候继续上/移动滚动条,结果父窗口的滚动条也上/下移动了。 解决方案 利用浏览器滚动事件.（FF使用DOMMouseScroll，其他浏览器都是用mousewheel.） 解决思路.FF下有个特殊属性event.detail，表示滚动的值event.detail正数：向下滚动，负数：向上滚动滚动一次值3，向上滚动一页值为-32768，向">
+  
+    <link rel="alternate" href="/atom.xml" title="Chauncey&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Chauncey&#39;s blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">主页</a>
+        
+          <a class="main-nav-link" href="/archives">文章</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://chaunceyzhong.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-scrollPrevented" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/09/scrollPrevented/" class="article-date">
+  <time datetime="2017-09-09T06:01:36.000Z" itemprop="datePublished">2017-09-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      阻止子窗口滚动条影响父窗口滚动条
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="u8D77_u56E0"><a href="#u8D77_u56E0" class="headerlink" title="起因"></a>起因</h3><p>最近在工作上遇到一个问题，就是在子窗口上/移动滚动条至末端时候继续上/移动滚动条,结果父窗口的滚动条也上/下移动了。</p>
+<h3 id="u89E3_u51B3_u65B9_u6848"><a href="#u89E3_u51B3_u65B9_u6848" class="headerlink" title="解决方案"></a>解决方案</h3><ol>
+<li>利用浏览器滚动事件.（FF使用DOMMouseScroll，其他浏览器都是用mousewheel.）</li>
+<li>解决思路.<br>FF下有个特殊属性event.detail，表示滚动的值<br>event.detail<br>正数：向下滚动，负数：向上滚动<br>滚动一次值3，向上滚动一页值为-32768，向下滚动一页值为+32768，其他值代表滚动的行数, 方向代表了数值的正负号<br>受信任的事件是不会给detail赋值0<br>其他浏览器，通过event.wheelDelta获取滚动值<br>正数：向上滚动，负数：向下滚动(滚动一次值120).</li>
+</ol>
+<blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">\</th>
+<th style="text-align:center">FF</th>
+<th style="text-align:right">Others</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">event.detail</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:right">N</td>
+</tr>
+<tr>
+<td style="text-align:left">event.wheelDelta</td>
+<td style="text-align:center">N</td>
+<td style="text-align:right">Y</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<ol>
+<li>实现方案.</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*禁止触发父元素的滚动事件-只能绑定当前对象 chauncey*/</span></div><div class="line">    $.fn.scrollUnique = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> $(<span class="keyword">this</span>).each(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">            $(<span class="keyword">this</span>).on(<span class="string">"mousewheel DOMMouseScroll"</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</div><div class="line">                <span class="keyword">var</span> e0 = e.originalEvent;</div><div class="line">                <span class="keyword">var</span> delta = e0.wheelDelta || -e0.detail;</div><div class="line">                <span class="keyword">this</span>.scrollTop += ( delta &lt; <span class="number">0</span> ? <span class="number">1</span> : <span class="number">-1</span> ) * <span class="number">30</span>;</div><div class="line">                e0.preventDefault();</div><div class="line">            &#125;);</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line"><span class="comment">//调用 sonObject.scrollUnique();其中 object 为子窗口对象.</span></div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://chaunceyzhong.github.io/2017/09/09/scrollPrevented/" data-id="cj7cy0rs20001z8zlo2mss9cw" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/FrontEnd-scroll/">-FrontEnd -scroll</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/08/31/Javascript中3个分片函数区别/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Javascript中3个分片函数区别</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/FrontEnd-scroll/">-FrontEnd -scroll</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FrontEnd/">FrontEnd</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/learn-by-hard/">learn-by-hard</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/maven/">maven</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站收集/">网站收集</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/FrontEnd-scroll/" style="font-size: 10px;">-FrontEnd -scroll</a> <a href="/tags/FrontEnd/" style="font-size: 20px;">FrontEnd</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/learn-by-hard/" style="font-size: 10px;">learn-by-hard</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/网站收集/" style="font-size: 10px;">网站收集</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/09/09/scrollPrevented/">阻止子窗口滚动条影响父窗口滚动条</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/31/Javascript中3个分片函数区别/">Javascript中3个分片函数区别</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/23/learn_by_hard_maven/">Maven learn by hard</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/16/keycode/">keycode</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/15/bookmark/">技术网站</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 chauncey.zhong<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">主页</a>
+  
+    <a href="/archives" class="mobile-nav-link">文章</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
