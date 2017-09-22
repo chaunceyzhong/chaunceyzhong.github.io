@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="logo" content="http://ouavb62y0.bkt.clouddn.com/octicons.jpg">
+  
+
+  
+  <title>JS callback你怎么了? | Chauncey&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="JS CallBack 在JavaScript中,callback其实就是一个函数而已，并没有“callback”这个关键字。 先看看callback的例子.下面是一个图片预加载的例子，当图片加载成功后回到图形缩放函数. 123456789101112131415161718192021//图片预加载函数(fn参数代表一个callback函数).function loadImage(url, f">
+<meta name="keywords" content="FrontEnd,callback">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS callback你怎么了?">
+<meta property="og:url" content="https://chaunceyzhong.github.io/2017/09/22/callbackInJS/index.html">
+<meta property="og:site_name" content="Chauncey&#39;s blog">
+<meta property="og:description" content="JS CallBack 在JavaScript中,callback其实就是一个函数而已，并没有“callback”这个关键字。 先看看callback的例子.下面是一个图片预加载的例子，当图片加载成功后回到图形缩放函数. 123456789101112131415161718192021//图片预加载函数(fn参数代表一个callback函数).function loadImage(url, f">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://i.imgur.com/sLbHNcA.jpg">
+<meta property="og:image" content="https://pbs.twimg.com/media/CbHuC7nWIAUOiOS.png">
+<meta property="og:updated_time" content="2017-09-22T09:25:59.233Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS callback你怎么了?">
+<meta name="twitter:description" content="JS CallBack 在JavaScript中,callback其实就是一个函数而已，并没有“callback”这个关键字。 先看看callback的例子.下面是一个图片预加载的例子，当图片加载成功后回到图形缩放函数. 123456789101112131415161718192021//图片预加载函数(fn参数代表一个callback函数).function loadImage(url, f">
+<meta name="twitter:image" content="https://i.imgur.com/sLbHNcA.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Chauncey&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Chauncey&#39;s blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">主页</a>
+        
+          <a class="main-nav-link" href="/archives">文章</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://chaunceyzhong.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-callbackInJS" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/22/callbackInJS/" class="article-date">
+  <time datetime="2017-09-22T06:01:36.000Z" itemprop="datePublished">2017-09-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JS callback你怎么了?
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://i.imgur.com/sLbHNcA.jpg" alt=""></p>
+<h1 id="JS_CallBack"><a href="#JS_CallBack" class="headerlink" title="JS CallBack"></a>JS CallBack</h1><ol>
+<li>在JavaScript中,callback其实就是一个函数而已，并没有“callback”这个关键字。</li>
+<li><p>先看看callback的例子.下面是一个图片预加载的例子，当图片加载成功后回到图形缩放函数.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//图片预加载函数(fn参数代表一个callback函数).</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadImage</span>(<span class="params">url, fn</span>) </span>&#123;</div><div class="line">	<span class="keyword">if</span>(!!url)&#123;</div><div class="line">        <span class="keyword">var</span> img = <span class="keyword">new</span> Image();</div><div class="line">        img.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;     </div><div class="line">            <span class="keyword">if</span> (<span class="keyword">typeof</span>(fn) === <span class="string">'function'</span>) &#123;</div><div class="line">                fn(img);</div><div class="line">            &#125;</div><div class="line">        &#125;;</div><div class="line">        img.src = url;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//图像加载完触发resizeImge</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">resizeImage</span>(<span class="params">img</span>)</span>&#123;</div><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment">	此处代码省略，做图像大小调整...</span></div><div class="line"><span class="comment">*/</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">loadImage(<span class="string">"http:www.baid.com/image"</span>,resizeImage);</div></pre></td></tr></table></figure>
+</li>
+<li><p>上面代码嵌套的回调函数比较少，但是万一回调的很多，这就是传说中的 callback hell(回调地狱…)见下图.<br><img src="https://pbs.twimg.com/media/CbHuC7nWIAUOiOS.png" alt=""><br>如果你在维护这么鬼畜的代码，那正如其名”回调地狱”,你真的掉进地狱了….</p>
+</li>
+</ol>
+<h1 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h1><ol>
+<li>为了解决这个现象,ES6 原生提供了 Promise 对象。</li>
+<li><p>Promise对象特点</p>
+<ol>
+<li>对象的状态不受外界影响。Promise代表一个异步操作对象，有三种状态(Pending,Resolved,Rejected)，<strong>只有异步操作的结果，可以决定当前是哪一种状态，任何其他操作都无法改变这个状态</strong>。这也是 Promise 这个名字的由来，它的英语意思就是「承诺」，表示其他手段无法改变。</li>
+<li>一旦状态改变，就不会再变，任何时候都可以得到这个结果。Promise 对象的状态改变，只有两种可能：从 Pending 变为 Resolved 和从 Pending 变为 Rejected。只要这两种情况发生，状态就凝固了，不会再变了，会一直保持这个结果。就算改变已经发生了，你再对 Promise 对象添加回调函数，也会立即得到这个结果。 有了 Promise 对象，就可以将异步操作以同步操作的流程表达出来，避免了层层嵌套的回调函数。此外，Promise 对象提供统一的接口，使得控制异步操作更加容易。 Promise 也有一些缺点。首先，无法取消 Promise，一旦新建它就会立即执行，无法中途取消。其次，如果不设置回调函数，Promise 内部抛出的错误，不会反应到外部。</li>
+<li>当处于 Pending 状态时，无法得知目前进展到哪一个阶段（刚刚开始还是即将完成）。</li>
+</ol>
+</li>
+<li><p>Promise DEMO</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Promise</span>.resolve(<span class="string">"Success"</span>).then(<span class="function"><span class="keyword">function</span>(<span class="params">value</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(value); <span class="comment">// "Success"</span></div><div class="line">&#125;, <span class="function"><span class="keyword">function</span>(<span class="params">value</span>) </span>&#123;</div><div class="line">  <span class="comment">// 不会被调用</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+<li><p>Promise 应用展示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">//传统回调写法(真恶心。。。)</div><div class="line">function ourImportantFunction(callback) &#123;</div><div class="line">  //... some code 1</div><div class="line">  task1(function(val1) &#123;</div><div class="line">    //... some code 2</div><div class="line">    task2(val1, function(val2) &#123;</div><div class="line">      //... some code 3</div><div class="line">      task3(val2, callback);</div><div class="line">    &#125;);</div><div class="line">  &#125;);</div><div class="line">&#125;</div><div class="line">//利用Promise改造</div><div class="line">function ourImportantFunction() &#123;</div><div class="line">  return Promise.resolve()</div><div class="line">    .then(function() &#123;</div><div class="line">        //... some code 1</div><div class="line">        return task1(val3)</div><div class="line">    &#125;)</div><div class="line">    .then(function(val2) &#123;</div><div class="line">        //... some code 2</div><div class="line">        return task2(val2)</div><div class="line">    &#125;)</div><div class="line">    .then(function(val2) &#123;</div><div class="line">        //... some code 3</div><div class="line">        return task3(val2);</div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line">ourImportantFunction().then(callback);</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="Genertor_28_u6B63_u5219_u6478_u7D22_u4E2D_u2026_29"><a href="#Genertor_28_u6B63_u5219_u6478_u7D22_u4E2D_u2026_29" class="headerlink" title="Genertor(正则摸索中…)"></a>Genertor(正则摸索中…)</h1><ol>
+<li>Promise 使原本嵌套式的callback模型变成“看上去线性”的模型，以此提供代码逻辑的顺畅性 ,异常处理也比较方便 。但是在异步回调中,Promise 也未能力挽狂澜…</li>
+<li><p>对Genertor也还没彻底搞明白…个人简单理解是把一段看上去是同步执行的代码给「异步」起来，可以给你很好的控制代码运行的状态和行为，甚至可以具备达到让你用同步的方式来写异步代码的能力，但理解起来会有点困难。 而 promise 就是个专门为异步设计的东西，是把异步串接起来，和同步运行基本上是背道而驰的。 </p>
+</li>
+<li><p>把上面的代码结合Genertor改写一下.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> ourImportantFunction = spawn(<span class="function"><span class="keyword">function</span>*(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">//... some code 1</span></div><div class="line">    <span class="keyword">var</span> val1 = <span class="keyword">yield</span> task1();<span class="comment">//失败不会往下执行</span></div><div class="line">    <span class="comment">//... some code 2</span></div><div class="line">    <span class="keyword">var</span> val2 = <span class="keyword">yield</span> task2(val1);</div><div class="line">    <span class="comment">//... some code 3</span></div><div class="line">    <span class="keyword">var</span> val3 = <span class="keyword">yield</span> task3(val2);</div><div class="line"></div><div class="line">    <span class="keyword">return</span> val3;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">spawn</span>(<span class="params">generator</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;    </div><div class="line">    <span class="keyword">var</span> iter = generator.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="built_in">Promise</span>.resolve().then(<span class="function"><span class="keyword">function</span> <span class="title">onValue</span>(<span class="params">lastValue</span>)</span>&#123;</div><div class="line">      <span class="keyword">var</span> result = iter.next(lastValue); </div><div class="line"></div><div class="line">      <span class="keyword">var</span> done  = result.done;</div><div class="line">      <span class="keyword">var</span> value = result.value;</div><div class="line"></div><div class="line">      <span class="keyword">if</span> (done) <span class="keyword">return</span> value; <span class="comment">// generator done, resolve promise</span></div><div class="line">      <span class="keyword">return</span> <span class="built_in">Promise</span>.resolve(value).then(onValue, iter.throw.bind(iter)); <span class="comment">// repeat</span></div><div class="line">    &#125;);</div><div class="line">  &#125;;</div><div class="line">&#125;</div><div class="line">ourImportantFunction().then(callback);</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="Async/Await"><a href="#Async/Await" class="headerlink" title="Async/Await"></a>Async/Await</h1><ol>
+<li>What remains to do is to implement spawn technique into language itself. So we are replacing spawn with async and yield with await and are coming to ES7 async/await.</li>
+<li>在ES7中整合了Promise跟Generator,async将替代genertor,await 替代yield.</li>
+<li>上面代码可以在进一步修改为<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> ourImportantFunction = <span class="keyword">async</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">//... some code 1</span></div><div class="line">    <span class="keyword">var</span> val1 = <span class="keyword">await</span> task1();</div><div class="line">    <span class="comment">//... some code 2</span></div><div class="line">    <span class="keyword">var</span> val2 = <span class="keyword">await</span> task2(val1);</div><div class="line">    <span class="comment">//... some code 3</span></div><div class="line">    <span class="keyword">var</span> val3 = <span class="keyword">await</span> task3(val2);</div><div class="line"></div><div class="line">    <span class="keyword">return</span> val3;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="u53C2_u8003"><a href="#u53C2_u8003" class="headerlink" title="参考"></a>参考</h1><ol>
+<li><a href="https://stackoverflow.com/questions/28031289/javascript-asynchronous-programming-promises-vs-generators" target="_blank" rel="external">https://stackoverflow.com/questions/28031289/javascript-asynchronous-programming-promises-vs-generators</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function" target="_blank" rel="external">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/resolve" target="_blank" rel="external">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/resolve</a></li>
+<li><a href="http://www.jianshu.com/p/063f7e490e9a" target="_blank" rel="external">http://www.jianshu.com/p/063f7e490e9a</a></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://chaunceyzhong.github.io/2017/09/22/callbackInJS/" data-id="cj7vom2yf000008zl9msghkva" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/FrontEnd/">FrontEnd</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/callback/">callback</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/09/09/scrollPrevented/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">阻止子窗口滚动条影响父窗口滚动条</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/FrontEnd/">FrontEnd</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/callback/">callback</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/learn-by-hard/">learn-by-hard</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/maven/">maven</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scroll/">scroll</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站收集/">网站收集</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/FrontEnd/" style="font-size: 20px;">FrontEnd</a> <a href="/tags/callback/" style="font-size: 10px;">callback</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/learn-by-hard/" style="font-size: 10px;">learn-by-hard</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/scroll/" style="font-size: 10px;">scroll</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/网站收集/" style="font-size: 10px;">网站收集</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/09/22/callbackInJS/">JS callback你怎么了?</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/09/scrollPrevented/">阻止子窗口滚动条影响父窗口滚动条</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/31/Javascript中3个分片函数区别/">Javascript中3个分片函数区别</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/23/learn_by_hard_maven/">Maven learn by hard</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/16/keycode/">keycode</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 chauncey.zhong<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">主页</a>
+  
+    <a href="/archives" class="mobile-nav-link">文章</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
